@@ -15,7 +15,7 @@ const NavBar = () => {
     const logoutHandler = () => {
         localStorage.removeItem("token")
         userCtx.removeUser()
-        navigate("/", { replace: true })
+        window.location.reload(true);
     }
 
     return (
