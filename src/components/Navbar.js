@@ -22,7 +22,7 @@ const NavBar = () => {
         <>
             <Navbar bg="primary" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Edvora Fullstack Assessment</Navbar.Brand>
+                    <Navbar.Brand href="#home">FavPokemon</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/" active={!isFavoritesActive}>Home</Nav.Link>
                         <Nav.Link href="/favorites" active={isFavoritesActive}>My Favorites</Nav.Link>
