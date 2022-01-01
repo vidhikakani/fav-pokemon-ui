@@ -7,6 +7,7 @@ import Login from "../containers/Login";
 import Signup from "../containers/Signup";
 import { fetchMyFavoritePokemons, getUser } from "../services/user";
 import UserContext from '../store/user-context'
+import Footer from "./Footer";
 
 const App = () => {
     const { addUser, upsertFavoritePokemons } = useContext(UserContext)
@@ -34,6 +35,7 @@ const App = () => {
                 <Route path="signin" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
             </Routes>
+            <Footer />
         </div>
     )
 }
