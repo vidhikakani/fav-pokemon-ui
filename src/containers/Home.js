@@ -11,6 +11,7 @@ import UserContext from '../store/user-context';
 const Home = () => {
     const [pokemonData, setPokemonData] = useState([])
     const [next, setNext] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
     const userCtx = useContext(UserContext)
 
     useEffect(() => {
@@ -38,10 +39,12 @@ const Home = () => {
     }, [pokemonData])
 
     const loadMoreHandler = async () => {
+        setIsLoading(true)
         const { nextUrl, pokemon_data } = await fetchAllPokemons(next)
         const pokemons = pokemonData.concat(pokemon_data)
         setPokemonData(pokemons)
         setNext(nextUrl)
+        setIsLoading(false)
     }
 
     const addToFavoriteHandler = async (pokemon_id) => {
@@ -73,7 +76,15 @@ const Home = () => {
             <Row xs={1} className="g-4 mt-2 mb-3">
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Button variant="primary" size="lg" onClick={loadMoreHandler}>
-                        Load More
+                        <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
+                        {isLoading && <span>Loading...</span>}
+                        {!isLoading && <span>Load More</span>}
                     </Button>
                 </div>
             </Row>

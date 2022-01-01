@@ -4,8 +4,8 @@ import Container from "react-bootstrap/Container"
 
 const Footer = () => {
     return (
-        <Container fluid className="mt-3">
-            <Navbar fixed="bottom" bg="light" variant="light">
+        <Container fluid style={{ marginTop: '5rem' }}>
+            <Navbar fixed="bottom" bg="primary" variant="dark">
                 <Container className="d-flex justify-content-center">
                     <Navbar.Brand href="https://github.com/vidhikakani"
                         rel="noreferrer noopener"
