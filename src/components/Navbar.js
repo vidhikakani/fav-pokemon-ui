@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom"
 import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
 import Container from "react-bootstrap/Container"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Tooltip from "react-bootstrap/Tooltip"
 import UserContext from '../store/user-context'
 
 const NavBar = () => {
@@ -31,11 +33,23 @@ const NavBar = () => {
                         <Nav.Link href="/signin">Login</Nav.Link>
                     </Nav>}
 
-                    {userCtx.user && <Nav.Item onClick={logoutHandler} style={{ color: 'white' }}>
-                        <Nav.Link style={{ color: 'white' }}>
-                            Signed in as: {userCtx.user.last_name}, {userCtx.user.first_name}
-                        </Nav.Link>
-                    </Nav.Item>}
+                    {userCtx.user && (<OverlayTrigger
+                        key={"tooltip-bottom"}
+                        placement={"bottom"}
+                        overlay={
+                            <Tooltip id={`tooltip-bottom`}>
+                                Logout
+                            </Tooltip>
+                        }
+                    >
+                        <Nav.Item onClick={logoutHandler} style={{ color: 'white' }}>
+                            <Nav.Link style={{ color: 'white' }}>
+                                Signed in as: {userCtx.user.last_name}, {userCtx.user.first_name}
+                            </Nav.Link>
+                        </Nav.Item>
+                    </OverlayTrigger>
+
+                    )}
                 </Container>
             </Navbar>
         </>
