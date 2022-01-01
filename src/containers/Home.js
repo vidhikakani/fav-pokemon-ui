@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
+import Spinner from "react-bootstrap/Spinner"
 import PokemonCard from '../components/PokemonCard'
 import { fetchAllPokemons } from '../services/pokemon'
 import { fetchMyFavoritePokemons, removeFavoritePokemon } from "../services/user"
@@ -76,13 +77,15 @@ const Home = () => {
             <Row xs={1} className="g-4 mt-2 mb-3">
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Button variant="primary" size="lg" onClick={loadMoreHandler}>
-                        <Spinner
-                            as="span"
-                            animation="border"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                        />
+                        {isLoading && (
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            />
+                        )}
                         {isLoading && <span>Loading...</span>}
                         {!isLoading && <span>Load More</span>}
                     </Button>
