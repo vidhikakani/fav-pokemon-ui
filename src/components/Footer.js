@@ -4,8 +4,8 @@ import Container from "react-bootstrap/Container"
 
 const Footer = () => {
     return (
-        <div>
-            <Navbar fixed="bottom">
+        <Container fluid className="mt-3">
+            <Navbar fixed="bottom" bg="light" variant="light">
                 <Container className="d-flex justify-content-center">
                     <Navbar.Brand href="https://github.com/vidhikakani"
                         rel="noreferrer noopener"
@@ -15,7 +15,7 @@ const Footer = () => {
                     </Navbar.Brand>
                 </Container>
             </Navbar>
-        </div>
+        </Container>
     )
 }
 
